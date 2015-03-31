@@ -6,19 +6,19 @@ use Twig_Token;
 
 class ConfiguratorTokenParser extends Twig_TokenParser
 {
-	public function parse(Twig_Token $token)
-	{
-		$parser = $this->parser;
-		$stream = $parser->getStream();
+    public function parse(Twig_Token $token)
+    {
+        $parser = $this->parser;
+        $stream = $parser->getStream();
 
-		$value = $parser->getExpressionParser()->parseExpression();
-		$stream->expect(Twig_Token::BLOCK_END_TYPE);
+        $value = $parser->getExpressionParser()->parseExpression();
+        $stream->expect(Twig_Token::BLOCK_END_TYPE);
 
-		return new ConfiguratorNode($value, $token->getLine(), $this->getTag());
-	}
+        return new ConfiguratorNode($value, $token->getLine(), $this->getTag());
+    }
 
-	public function getTag()
-	{
-		return 'config_metatags';
-	}
+    public function getTag()
+    {
+        return 'config_metatags';
+    }
 }
