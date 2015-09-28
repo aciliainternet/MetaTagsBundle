@@ -17,7 +17,7 @@ class MetaTagsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            'render_metatags' => new \Twig_Function_Method($this, 'render', ['is_safe' => array('html')])
+            new \Twig_SimpleFunction('render_metatags', [$this, 'render'], ['is_safe' => ['html']]),
         ];
     }
 
