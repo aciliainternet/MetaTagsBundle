@@ -3,10 +3,10 @@ parameters:
 services:
     acilia.metatags:
         class: Acilia\Bundle\MetaTagsBundle\Service\MetaTagsService
-        arguments: [@kernel]
+        arguments: ["@kernel"]
 
     acilia.metatags.twig_extension:
         class: Acilia\Bundle\MetaTagsBundle\Library\Twig\Extension\MetaTagsExtension
-        arguments: [@acilia.metatags]
+        arguments: ["@acilia.metatags"]
         tags:
           - { name: twig.extension }
