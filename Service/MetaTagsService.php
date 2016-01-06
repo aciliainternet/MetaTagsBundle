@@ -5,6 +5,7 @@ class MetaTagsService
 {
     protected $kernel;
     protected $config;
+    protected $custom;
 
     public function __construct($kernel)
     {
@@ -25,6 +26,22 @@ class MetaTagsService
                 'og_video_type' => ''
             ]
         ];
+        $this->custom = [];
+    }
+
+    public function setCustom($tag, $value)
+    {
+        $this->custom[$tag] = $value;
+        return $this;
+    }
+
+    public function setCustoms(Array $tags)
+    {
+        foreach ($tags as $tag => $value) {
+            $this->setCustom($tag, $value);
+        }
+
+        return $this;
     }
 
     public function configure($configuration)
@@ -89,6 +106,10 @@ class MetaTagsService
         $metaTags .= $this->kernel->getContainer()->get('twig')->render('AciliaMetaTagsBundle::metatags.html.twig', $config);
 
         $metaTags .= $this->kernel->getContainer()->get('twig')->render('AciliaMetaTagsBundle::opengraph.html.twig', $config);
+
+        if (count($this->custom) > 0) {
+            $metaTags .= $this->kernel->getContainer()->get('twig')->render('AciliaMetaTagsBundle::custom.html.twig', ['tags' => $this->custom]);
+        }
 
         $metaTags .= PHP_EOL . '<!-- END META TAGS -->';
         return $metaTags;
