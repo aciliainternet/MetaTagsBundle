@@ -93,7 +93,7 @@ class MetaTagsService
         $config['title'] = trim($config['title']);
         $config['description'] = trim($config['description']);
         $config['keywords'] = trim($config['keywords']);
-	$config['og_title'] = isset($config['og_title']) ? trim($config['og_title']) : trim($config['title']);
+        $config['og_title'] = isset($config['og_title']) ? trim($config['og_title']) : trim($config['title']);
 
         return $config;
     }
