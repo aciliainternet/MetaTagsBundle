@@ -14,7 +14,7 @@ class ConfiguratorNode extends Twig_Node
 
     public function compile(Twig_Compiler $compiler)
     {
-        $compiler->raw('$this->env->getExtension(\'acilia.metatags.twig_extension\')->configure(')
+        $compiler->raw('$this->env->getExtension(\'Acilia\\Bundle\\MetaTagsBundle\\Library\\Twig\Extension\\MetaTagsExtension\')->configure(')
                  ->subcompile($this->getNode('value'))
                  ->raw(');');
     }
