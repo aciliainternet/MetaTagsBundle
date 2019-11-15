@@ -23,7 +23,8 @@ class MetaTagsService
                 'og_video_secure_url' => '',
                 'og_video_width' => '',
                 'og_video_height' => '',
-                'og_video_type' => ''
+                'og_video_type' => '',
+                'canonical' => '',
             ]
         ];
         $this->custom = [];
